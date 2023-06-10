@@ -26,23 +26,23 @@ export function createSavvySwapDataSource(
       ],
       eventHandlers: [
         {
-          event: "Deposit(indexed address, indexed address, uint256)",
+          event: "Deposit(indexed address,indexed address,uint256)",
           handler: "handleDeposit",
         },
         {
-          event: "Withdraw(indexed address, indexed address, uint256)",
+          event: "Withdraw(indexed address,indexed address,uint256)",
           handler: "handleWithdraw",
         },
         {
-          event: "Claim(uint256, address)",
+          event: "Claim(indexed address,indexed address,uint256)",
           handler: "handleClaim",
         },
         {
-          event: "Swap(indexed address, uint256)",
+          event: "Swap(indexed address,uint256)",
           handler: "handleSwap",
         },
       ],
-      file: `${MANIFEST_PATH_TO_ROOT}subgraph/handlers/savvySwap.ts`,
+      file: `${MANIFEST_PATH_TO_ROOT}src/mappings/savvySwap.ts`,
     },
   };
 }

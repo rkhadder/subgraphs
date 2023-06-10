@@ -58,7 +58,7 @@ export function createSavvyPositionManagerDataSource(
           handler: "handleRepayWithCollateral",
         },
       ],
-      file: `${MANIFEST_PATH_TO_ROOT}subgraph/handlers/savvyPositionManagerUSD.ts`,
+      file: `${MANIFEST_PATH_TO_ROOT}src/mappings/savvyPositionManager.ts`,
     },
   };
 }

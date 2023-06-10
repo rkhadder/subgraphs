@@ -26,23 +26,11 @@ export function createSavvySageDataSource(
       ],
       eventHandlers: [
         {
-          event: "Deposit(indexed address, indexed address, uint256)",
-          handler: "handleDeposit",
-        },
-        {
-          event: "Withdraw(indexed address, indexed address, uint256)",
-          handler: "handleWithdraw",
-        },
-        {
-          event: "Claim(uint256, address)",
-          handler: "handleClaim",
-        },
-        {
-          event: "Swap(indexed address, uint256)",
-          handler: "handleSwap",
+          event: "SetFlowRate(address,uint256)",
+          handler: "handleSetFlowRate",
         },
       ],
-      file: `${MANIFEST_PATH_TO_ROOT}subgraph/handlers/savvySage.ts`,
+      file: `${MANIFEST_PATH_TO_ROOT}src/mappings/savvySage.ts`,
     },
   };
 }

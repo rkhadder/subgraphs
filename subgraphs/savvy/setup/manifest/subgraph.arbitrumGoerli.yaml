@@ -1,6 +1,6 @@
 specVersion: 0.1.20230608
 schema:
-  file: ./schema.graphql
+  file: ../../schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: SavvyPositionManagerUSD
@@ -36,7 +36,7 @@ dataSources:
             RepayWithCollateral(indexed address,indexed address,indexed
             address,uint256,uint256)
           handler: handleRepayWithCollateral
-      file: ../../subgraph/handlers/savvyPositionManagerUSD.ts
+      file: ../../src/mappings/savvyPositionManager.ts
   - kind: ethereum/contract
     name: SavvyPositionManagerETH
     network: arbitrum-goerli
@@ -71,7 +71,7 @@ dataSources:
             RepayWithCollateral(indexed address,indexed address,indexed
             address,uint256,uint256)
           handler: handleRepayWithCollateral
-      file: ../../subgraph/handlers/savvyPositionManagerUSD.ts
+      file: ../../src/mappings/savvyPositionManager.ts
   - kind: ethereum/contract
     name: SavvyPositionManagerBTC
     network: arbitrum-goerli
@@ -106,7 +106,7 @@ dataSources:
             RepayWithCollateral(indexed address,indexed address,indexed
             address,uint256,uint256)
           handler: handleRepayWithCollateral
-      file: ../../subgraph/handlers/savvyPositionManagerUSD.ts
+      file: ../../src/mappings/savvyPositionManager.ts
   - kind: ethereum/contract
     name: SavvySwapBTC.b
     network: arbitrum-goerli
@@ -123,15 +123,15 @@ dataSources:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
+        - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
+        - event: Withdraw(indexed address,indexed address,uint256)
           handler: handleWithdraw
-        - event: Claim(uint256, address)
+        - event: Claim(indexed address,indexed address,uint256)
           handler: handleClaim
-        - event: Swap(indexed address, uint256)
+        - event: Swap(indexed address,uint256)
           handler: handleSwap
-      file: ../../subgraph/handlers/savvySwap.ts
+      file: ../../src/mappings/savvySwap.ts
   - kind: ethereum/contract
     name: SavvySwapDAI
     network: arbitrum-goerli
@@ -148,15 +148,15 @@ dataSources:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
+        - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
+        - event: Withdraw(indexed address,indexed address,uint256)
           handler: handleWithdraw
-        - event: Claim(uint256, address)
+        - event: Claim(indexed address,indexed address,uint256)
           handler: handleClaim
-        - event: Swap(indexed address, uint256)
+        - event: Swap(indexed address,uint256)
           handler: handleSwap
-      file: ../../subgraph/handlers/savvySwap.ts
+      file: ../../src/mappings/savvySwap.ts
   - kind: ethereum/contract
     name: SavvySwapUSDC
     network: arbitrum-goerli
@@ -173,15 +173,15 @@ dataSources:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
+        - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
+        - event: Withdraw(indexed address,indexed address,uint256)
           handler: handleWithdraw
-        - event: Claim(uint256, address)
+        - event: Claim(indexed address,indexed address,uint256)
           handler: handleClaim
-        - event: Swap(indexed address, uint256)
+        - event: Swap(indexed address,uint256)
           handler: handleSwap
-      file: ../../subgraph/handlers/savvySwap.ts
+      file: ../../src/mappings/savvySwap.ts
   - kind: ethereum/contract
     name: SavvySwapUSDT
     network: arbitrum-goerli
@@ -198,15 +198,15 @@ dataSources:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
+        - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
+        - event: Withdraw(indexed address,indexed address,uint256)
           handler: handleWithdraw
-        - event: Claim(uint256, address)
+        - event: Claim(indexed address,indexed address,uint256)
           handler: handleClaim
-        - event: Swap(indexed address, uint256)
+        - event: Swap(indexed address,uint256)
           handler: handleSwap
-      file: ../../subgraph/handlers/savvySwap.ts
+      file: ../../src/mappings/savvySwap.ts
   - kind: ethereum/contract
     name: SavvySwapWBTC
     network: arbitrum-goerli
@@ -223,15 +223,15 @@ dataSources:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
+        - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
+        - event: Withdraw(indexed address,indexed address,uint256)
           handler: handleWithdraw
-        - event: Claim(uint256, address)
+        - event: Claim(indexed address,indexed address,uint256)
           handler: handleClaim
-        - event: Swap(indexed address, uint256)
+        - event: Swap(indexed address,uint256)
           handler: handleSwap
-      file: ../../subgraph/handlers/savvySwap.ts
+      file: ../../src/mappings/savvySwap.ts
   - kind: ethereum/contract
     name: SavvySwapWETH
     network: arbitrum-goerli
@@ -248,15 +248,15 @@ dataSources:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
+        - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
+        - event: Withdraw(indexed address,indexed address,uint256)
           handler: handleWithdraw
-        - event: Claim(uint256, address)
+        - event: Claim(indexed address,indexed address,uint256)
           handler: handleClaim
-        - event: Swap(indexed address, uint256)
+        - event: Swap(indexed address,uint256)
           handler: handleSwap
-      file: ../../subgraph/handlers/savvySwap.ts
+      file: ../../src/mappings/savvySwap.ts
   - kind: ethereum/contract
     name: SavvySageBTC
     network: arbitrum-goerli
@@ -273,15 +273,9 @@ dataSources:
         - name: SavvySage
           file: ../../abis/SavvySage.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
-          handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
-          handler: handleWithdraw
-        - event: Claim(uint256, address)
-          handler: handleClaim
-        - event: Swap(indexed address, uint256)
-          handler: handleSwap
-      file: ../../subgraph/handlers/savvySage.ts
+        - event: SetFlowRate(address,uint256)
+          handler: handleSetFlowRate
+      file: ../../src/mappings/savvySage.ts
   - kind: ethereum/contract
     name: SavvySageETH
     network: arbitrum-goerli
@@ -298,15 +292,9 @@ dataSources:
         - name: SavvySage
           file: ../../abis/SavvySage.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
-          handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
-          handler: handleWithdraw
-        - event: Claim(uint256, address)
-          handler: handleClaim
-        - event: Swap(indexed address, uint256)
-          handler: handleSwap
-      file: ../../subgraph/handlers/savvySage.ts
+        - event: SetFlowRate(address,uint256)
+          handler: handleSetFlowRate
+      file: ../../src/mappings/savvySage.ts
   - kind: ethereum/contract
     name: SavvySageUSD
     network: arbitrum-goerli
@@ -323,12 +311,6 @@ dataSources:
         - name: SavvySage
           file: ../../abis/SavvySage.json
       eventHandlers:
-        - event: Deposit(indexed address, indexed address, uint256)
-          handler: handleDeposit
-        - event: Withdraw(indexed address, indexed address, uint256)
-          handler: handleWithdraw
-        - event: Claim(uint256, address)
-          handler: handleClaim
-        - event: Swap(indexed address, uint256)
-          handler: handleSwap
-      file: ../../subgraph/handlers/savvySage.ts
+        - event: SetFlowRate(address,uint256)
+          handler: handleSetFlowRate
+      file: ../../src/mappings/savvySage.ts

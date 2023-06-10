@@ -3,7 +3,12 @@ import { createSavvyPositionManagerDataSource } from "./data-sources/SavvyPositi
 import { createSavvySageDataSource } from "./data-sources/SavvySage";
 import { createSavvySwapDataSource } from "./data-sources/SavvySwap";
 import writeYamlFile from "write-yaml-file";
-import { DataSourceConfig, Manifest, NetworkConfig } from "./utils";
+import {
+  DataSourceConfig,
+  Manifest,
+  MANIFEST_PATH_TO_ROOT,
+  NetworkConfig,
+} from "./utils";
 
 const abiToFunctionMap: Record<
   string,
@@ -18,7 +23,7 @@ function initializeManifest() {
   return {
     specVersion: "0.1.20230608",
     schema: {
-      file: "./schema.graphql",
+      file: `${MANIFEST_PATH_TO_ROOT}schema.graphql`,
     },
     dataSources: [],
   };
