@@ -1,0 +1,195 @@
+##################################
+##### Savvy Position Manager #####
+##################################
+
+type SPMDepositYieldTokenEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address that is depositing funds "
+  sender: Account!
+
+  " The yield token that was deposited "
+  yieldToken: Bytes!
+
+  " The amount of the yield token that was deposited "
+  amount: BigInt!
+
+  " The account that received the shares "
+  recipient: Account!
+}
+
+type SPMWithdrawYieldTokenEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The account that the funds were withdrawn from "
+  owner: Account!
+
+  " The yield token that was withdrawn "
+  yieldToken: Bytes!
+
+  " The amount of the yield token that was withdrawn "
+  shares: BigInt!
+
+  " The account that received the yield tokens "
+  recipient: Account!
+}
+
+type SPMBorrowEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The account that is underwriting the advance "
+  owner: Account!
+
+  " The amount that was borrowed "
+  amount: BigInt!
+
+  " The account that received the borrowed tokens "
+  recipient: Account!
+}
+
+type SPMRepayWithDebtTokenEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address that is repaying the outstanding debt "
+  sender: Account!
+
+  " The amount of debt token that was repaid "
+  amount: BigInt!
+
+  " The account who's debt was repaid "
+  recipient: Account!
+}
+
+type SPMRepayWithBaseTokenEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address that is repaying the outstanding debt "
+  sender: Account!
+
+  " The token that was used to repay the outstanding debt "
+  baseToken: Bytes!
+
+  " The amount of base token that was repaid "
+  amount: BigInt!
+
+  " The account who's debt was repaid "
+  recipient: Account!
+
+  " The amount of debt that was paid off "
+  credit: BigInt!
+}
+
+type SPMRepayWithCollateralEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address that is repaying the outstanding debt "
+  owner: Account!
+
+  " The collateral that will be used to repay the outstanding debt "
+  yieldToken: Bytes!
+
+  " The base token that was used to repay "
+  baseToken: Bytes!
+
+  " The amount of collateral that was repaid "
+  shares: BigInt!
+
+  " The amount of debt that was paid off "
+  credit: BigInt!
+}

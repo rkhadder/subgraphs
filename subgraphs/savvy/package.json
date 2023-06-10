@@ -4,7 +4,10 @@
     "format": "npx prettier --write .",
     "build": "./build.sh",
     "build:subgraph": "graph build",
-    "build:manifest": "ts-node --files setup/buildManifest.ts"
+    "build:schema": "ts-node --files setup/buildSchema.ts",
+    "build:manifest": "ts-node --files setup/buildManifest.ts",
+    "buildSchemaAndCodegen": "npm run build:schema && npm run codegen",
+    "codegen": "graph codegen"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.48.0",

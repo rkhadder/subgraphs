@@ -1,0 +1,15 @@
+###################
+##### Savvy Account #####
+###################
+
+type Account @entity @regularPolling {
+  " The address of the account "
+  id: ID!
+
+  " Total deposited in Savvy in USD "
+  totalDepositedUSD: BigInt!
+
+  " Total outstanding debt from Savvy in USD "
+  totalDebtUSD: BigInt!
+  #   accountBalances: [AccountBalance!]! @derivedFrom(field: "account")
+}
