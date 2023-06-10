@@ -21,7 +21,7 @@ const abiToFunctionMap: Record<
 
 function initializeManifest() {
   return {
-    specVersion: "0.1.20230608",
+    specVersion: "0.0.5",
     schema: {
       file: `${MANIFEST_PATH_TO_ROOT}schema.graphql`,
     },

@@ -4,8 +4,8 @@ import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 ///// Versions /////
 ////////////////////
 
-export const PROTOCOL_NAME = "Uniswap v2";
-export const PROTOCOL_SLUG = "uniswap-v2";
+export const PROTOCOL_NAME = "Savvy DeFi";
+export const PROTOCOL_SLUG = "savvy-defi";
 
 ////////////////////////
 ///// Schema Enums /////

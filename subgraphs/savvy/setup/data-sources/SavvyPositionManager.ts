@@ -32,30 +32,30 @@ export function createSavvyPositionManagerDataSource(
         {
           event:
             "DepositYieldToken(indexed address,indexed address,uint256,address)",
-          handler: "handleDepositYieldToken",
+          handler: "handleDepositYieldTokenEvent",
         },
         {
           event:
             "WithdrawYieldToken(indexed address,indexed address,uint256,address)",
-          handler: "handleWithdrawYieldToken",
+          handler: "handleWithdrawYieldTokenEvent",
         },
         {
           event: "Borrow(indexed address,uint256,address)",
-          handler: "handleBorrow",
+          handler: "handleBorrowEvent",
         },
         {
           event: "RepayWithDebtToken(indexed address,uint256,address)",
-          handler: "handleRepayWithDebtToken",
+          handler: "handleRepayWithDebtTokenEvent",
         },
         {
           event:
             "RepayWithBaseToken(indexed address,indexed address,uint256,address,uint256)",
-          handler: "handleRepayWithBaseToken",
+          handler: "handleRepayWithBaseTokenEvent",
         },
         {
           event:
             "RepayWithCollateral(indexed address,indexed address,indexed address,uint256,uint256)",
-          handler: "handleRepayWithCollateral",
+          handler: "handleRepayWithCollateralEvent",
         },
       ],
       file: `${MANIFEST_PATH_TO_ROOT}src/mappings/savvyPositionManager.ts`,

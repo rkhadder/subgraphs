@@ -5,6 +5,34 @@
 ##                                                      ##
 ##########################################################
 
+enum Network {
+  ARBITRUM_ONE
+  ARWEAVE_MAINNET
+  AURORA
+  AVALANCHE
+  BOBA
+  BSC # aka BNB Chain
+  CELO
+  COSMOS
+  CRONOS
+  MAINNET # Ethereum Mainnet
+  FANTOM
+  FUSE
+  HARMONY
+  JUNO
+  MOONBEAM
+  MOONRIVER
+  NEAR_MAINNET
+  OPTIMISM
+  OSMOSIS
+  MATIC # aka Polygon
+  XDAI # aka Gnosis Chain
+}
+
+###########################
+## Blockchain Primitives ##
+###########################
+
 type Block @entity {
   " Block number "
   id: ID!
@@ -98,33 +126,10 @@ type Token @entity @regularPolling {
   " Optional field to track the block number of the last token price "
   lastPriceBlockNumber: BigInt
 }
+
 # Subgraph Schema: Generic
 # Version: 1.4.0
 # See https://github.com/messari/subgraphs/blob/master/docs/SCHEMA.md for details
-
-enum Network {
-  ARBITRUM_ONE
-  ARWEAVE_MAINNET
-  AURORA
-  AVALANCHE
-  BOBA
-  BSC # aka BNB Chain
-  CELO
-  COSMOS
-  CRONOS
-  MAINNET # Ethereum Mainnet
-  FANTOM
-  FUSE
-  HARMONY
-  JUNO
-  MOONBEAM
-  MOONRIVER
-  NEAR_MAINNET
-  OPTIMISM
-  OSMOSIS
-  MATIC # aka Polygon
-  XDAI # aka Gnosis Chain
-}
 
 enum ProtocolType {
   EXCHANGE
@@ -522,6 +527,7 @@ type ActiveAccount @entity {
   " { daily/hourly }-{ Address of the account }-{ Days/hours since Unix epoch } "
   id: ID!
 }
+
 ###################
 ##### Savvy Account #####
 ###################
