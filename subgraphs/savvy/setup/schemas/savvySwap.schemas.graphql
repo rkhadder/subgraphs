@@ -1,0 +1,116 @@
+################
+## Savvy Swap ##
+################
+
+type SwapDepositEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address sending funds "
+  sender: Account!
+
+  " The address being credited with the deposit "
+  owner: Account!
+
+  " The amount of tokens being deposited "
+  amount: BigInt!
+}
+
+type SwapWithdrawEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The account being withdrawn from "
+  sender: Account!
+
+  " The address receiving the withdrawn funds "
+  recipient: Account!
+
+  " The amount of tokens being withdrawn "
+  amount: BigInt!
+}
+
+type SwapClaimEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address claiming funds "
+  sender: Account!
+
+  " The address receiving the claimed funds "
+  recipient: Account!
+
+  " The amount of tokens claimed "
+  amount: BigInt!
+}
+
+type SwapSwapEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address calling `swap()` "
+  sender: Account!
+
+  " The amount of tokens swapped "
+  amount: BigInt!
+}

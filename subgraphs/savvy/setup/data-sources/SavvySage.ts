@@ -27,7 +27,7 @@ export function createSavvySageDataSource(
       eventHandlers: [
         {
           event: "SetFlowRate(address,uint256)",
-          handler: "handleSetFlowRate",
+          handler: "handleSetFlowRateEvent",
         },
       ],
       file: `${MANIFEST_PATH_TO_ROOT}src/mappings/savvySage.ts`,

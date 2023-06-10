@@ -1,6 +1,6 @@
-###################
+#########################
 ##### Savvy Account #####
-###################
+#########################
 
 type Account @entity @regularPolling {
   " The address of the account "
@@ -11,5 +11,47 @@ type Account @entity @regularPolling {
 
   " Total outstanding debt from Savvy in USD "
   totalDebtUSD: BigInt!
-  #   accountBalances: [AccountBalance!]! @derivedFrom(field: "account")
+
+  " The account balance for each SavvyPositionManager "
+  accountBalances: [AccountBalance!]! @derivedFrom(field: "account")
+}
+
+type AccountBalance @entity {
+  " { Account Address }-{ Savvy Postion Address} "
+  id: ID!
+
+  " The account that this balance belongs to "
+  account: Account!
+
+  " The SavvyPositionManager this balance is representing "
+  savvyPositionManager: String!
+
+  " The outstanding debt in amount of SPM Synthetic (e.g. svUSD)"
+  debt: BigInt!
+
+  " The outstanding debt in USD "
+  debtUSD: BigInt!
+
+  " The total amount deposited in SPM in USD "
+  totalDepositedUSD: BigInt!
+
+  " The balance per strategy "
+  strategies: [StrategyBalance!]! @derivedFrom(field: "accountBalance")
+}
+
+type StrategyBalance @entity {
+  " { Account Address }-{ Savvy Postion Address}-{ Strategy Address } "
+  id: ID!
+
+  " The account balance that this strategy balance belongs to "
+  accountBalance: AccountBalance!
+
+  " The yield strategy that this balance represents "
+  yieldToken: String!
+
+  " The amount deposited in this strategy "
+  amountDeposited: BigInt!
+
+  " The amount deposited in this strategy in USD "
+  amountDepositedUSD: BigInt!
 }

@@ -9,6 +9,8 @@ async function main() {
     "todo",
     "savvyAccount",
     "savvyPositionManager",
+    "savvySage",
+    "savvySwap",
   ];
 
   const schemas = schemaFileNames.map((schemaFileName) => {

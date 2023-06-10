@@ -528,9 +528,9 @@ type ActiveAccount @entity {
   id: ID!
 }
 
-###################
+#########################
 ##### Savvy Account #####
-###################
+#########################
 
 type Account @entity @regularPolling {
   " The address of the account "
@@ -541,9 +541,50 @@ type Account @entity @regularPolling {
 
   " Total outstanding debt from Savvy in USD "
   totalDebtUSD: BigInt!
-  #   accountBalances: [AccountBalance!]! @derivedFrom(field: "account")
+
+  " The account balance for each SavvyPositionManager "
+  accountBalances: [AccountBalance!]! @derivedFrom(field: "account")
 }
 
+type AccountBalance @entity {
+  " { Account Address }-{ Savvy Postion Address} "
+  id: ID!
+
+  " The account that this balance belongs to "
+  account: Account!
+
+  " The SavvyPositionManager this balance is representing "
+  savvyPositionManager: String!
+
+  " The outstanding debt in amount of SPM Synthetic (e.g. svUSD)"
+  debt: BigInt!
+
+  " The outstanding debt in USD "
+  debtUSD: BigInt!
+
+  " The total amount deposited in SPM in USD "
+  totalDepositedUSD: BigInt!
+
+  " The balance per strategy "
+  strategies: [StrategyBalance!]! @derivedFrom(field: "accountBalance")
+}
+
+type StrategyBalance @entity {
+  " { Account Address }-{ Savvy Postion Address}-{ Strategy Address } "
+  id: ID!
+
+  " The account balance that this strategy balance belongs to "
+  accountBalance: AccountBalance!
+
+  " The yield strategy that this balance represents "
+  yieldToken: String!
+
+  " The amount deposited in this strategy "
+  amountDeposited: BigInt!
+
+  " The amount deposited in this strategy in USD "
+  amountDepositedUSD: BigInt!
+}
 ##################################
 ##### Savvy Position Manager #####
 ##################################
@@ -738,4 +779,150 @@ type SPMRepayWithCollateralEvent implements Event @entity @transaction {
 
   " The amount of debt that was paid off "
   credit: BigInt!
+}
+
+################
+## Savvy Sage ##
+################
+
+type SageSetFlowRateEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The base token being set "
+  baseToken: String!
+
+  " The flow rate for the base token "
+  flowRate: BigInt!
+}
+################
+## Savvy Swap ##
+################
+
+type SwapDepositEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address sending funds "
+  sender: Account!
+
+  " The address being credited with the deposit "
+  owner: Account!
+
+  " The amount of tokens being deposited "
+  amount: BigInt!
+}
+
+type SwapWithdrawEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The account being withdrawn from "
+  sender: Account!
+
+  " The address receiving the withdrawn funds "
+  recipient: Account!
+
+  " The amount of tokens being withdrawn "
+  amount: BigInt!
+}
+
+type SwapClaimEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address claiming funds "
+  sender: Account!
+
+  " The address receiving the claimed funds "
+  recipient: Account!
+
+  " The amount of tokens claimed "
+  amount: BigInt!
+}
+
+type SwapSwapEvent implements Event @entity @transaction {
+  " { Transaction hash }-{ Log index } "
+  id: ID!
+
+  " Transaction hash of the transaction that emitted this event "
+  transaction: Transaction!
+
+  " Event log index. For transactions that don't emit event, create arbitrary index starting from 0 "
+  logIndex: Int!
+
+  " The protocol this transaction belongs to "
+  protocol: Protocol!
+
+  " Block number of this event "
+  block: Block!
+
+  " Timestamp of this event "
+  timestamp: BigInt!
+
+  " The address calling `swap()` "
+  sender: Account!
+
+  " The amount of tokens swapped "
+  amount: BigInt!
 }

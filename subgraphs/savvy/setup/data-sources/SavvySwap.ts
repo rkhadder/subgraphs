@@ -27,19 +27,19 @@ export function createSavvySwapDataSource(
       eventHandlers: [
         {
           event: "Deposit(indexed address,indexed address,uint256)",
-          handler: "handleDeposit",
+          handler: "handleDepositEvent",
         },
         {
           event: "Withdraw(indexed address,indexed address,uint256)",
-          handler: "handleWithdraw",
+          handler: "handleWithdrawEvent",
         },
         {
           event: "Claim(indexed address,indexed address,uint256)",
-          handler: "handleClaim",
+          handler: "handleClaimEvent",
         },
         {
           event: "Swap(indexed address,uint256)",
-          handler: "handleSwap",
+          handler: "handleSwapEvent",
         },
       ],
       file: `${MANIFEST_PATH_TO_ROOT}src/mappings/savvySwap.ts`,
