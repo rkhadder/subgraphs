@@ -79,9 +79,6 @@ type Protocol @entity @regularPolling {
   " Number of cumulative unique users "
   cumulativeUniqueUsers: Int!
 
-  " Total number of pools "
-  totalPoolCount: Int!
-
   ##### Snapshots #####
 
   " Daily usage metrics for this protocol "
@@ -95,10 +92,8 @@ type Protocol @entity @regularPolling {
   " Daily financial metrics for this protocol "
   financialMetrics: [FinancialsDailySnapshot!]! @derivedFrom(field: "protocol")
 
-  ##### Pools #####
-
-  " All pools that belong to this protocol "
-  pools: [Pool!]! @derivedFrom(field: "protocol")
+  " All events that belong to this protocol "
+  events: [Event!]! @derivedFrom(field: "protocol")
 }
 
 ###############################

@@ -23,6 +23,10 @@ export function createSavvySwapDataSource(
           name: "SavvySwap",
           file: `${MANIFEST_PATH_TO_ROOT}abis/SavvySwap.json`,
         },
+        {
+          name: "SavvyFrontendInfoAggregator",
+          file: `${MANIFEST_PATH_TO_ROOT}abis/SavvyFrontendInfoAggregator.json`,
+        },
       ],
       eventHandlers: [
         {

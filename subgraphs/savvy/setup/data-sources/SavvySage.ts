@@ -23,6 +23,10 @@ export function createSavvySageDataSource(
           name: "SavvySage",
           file: `${MANIFEST_PATH_TO_ROOT}abis/SavvySage.json`,
         },
+        {
+          name: "SavvyFrontendInfoAggregator",
+          file: `${MANIFEST_PATH_TO_ROOT}abis/SavvyFrontendInfoAggregator.json`,
+        },
       ],
       eventHandlers: [
         {

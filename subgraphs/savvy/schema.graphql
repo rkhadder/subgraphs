@@ -7,6 +7,7 @@
 
 enum Network {
   ARBITRUM_ONE
+  ARBITRUM_GOERLI
   ARWEAVE_MAINNET
   AURORA
   AVALANCHE
@@ -127,6 +128,10 @@ type Token @entity @regularPolling {
   lastPriceBlockNumber: BigInt
 }
 
+interface Contract {
+  " Contract address "
+  id: ID!
+}
 # Subgraph Schema: Generic
 # Version: 1.4.0
 # See https://github.com/messari/subgraphs/blob/master/docs/SCHEMA.md for details
@@ -208,9 +213,6 @@ type Protocol @entity @regularPolling {
   " Number of cumulative unique users "
   cumulativeUniqueUsers: Int!
 
-  " Total number of pools "
-  totalPoolCount: Int!
-
   ##### Snapshots #####
 
   " Daily usage metrics for this protocol "
@@ -224,10 +226,8 @@ type Protocol @entity @regularPolling {
   " Daily financial metrics for this protocol "
   financialMetrics: [FinancialsDailySnapshot!]! @derivedFrom(field: "protocol")
 
-  ##### Pools #####
-
-  " All pools that belong to this protocol "
-  pools: [Pool!]! @derivedFrom(field: "protocol")
+  " All events that belong to this protocol "
+  events: [Event!]! @derivedFrom(field: "protocol")
 }
 
 ###############################
@@ -547,14 +547,14 @@ type Account @entity @regularPolling {
 }
 
 type AccountBalance @entity {
-  " { Account Address }-{ Savvy Postion Address} "
+  " { Account Address }-{ Synthetic Type } "
   id: ID!
 
   " The account that this balance belongs to "
   account: Account!
 
-  " The SavvyPositionManager this balance is representing "
-  savvyPositionManager: String!
+  " The synthetic type this balance is referring to (e.g. USD, ETH, BTC ) "
+  syntheticType: String!
 
   " The outstanding debt in amount of SPM Synthetic (e.g. svUSD)"
   debt: BigInt!
@@ -570,14 +570,14 @@ type AccountBalance @entity {
 }
 
 type StrategyBalance @entity {
-  " { Account Address }-{ Savvy Postion Address}-{ Strategy Address } "
+  " { Account Address }-{ Synthetic Type }-{ Strategy Address } "
   id: ID!
 
   " The account balance that this strategy balance belongs to "
   accountBalance: AccountBalance!
 
   " The yield strategy that this balance represents "
-  yieldToken: String!
+  strategy: Strategy!
 
   " The amount deposited in this strategy "
   amountDeposited: BigInt!
@@ -585,6 +585,15 @@ type StrategyBalance @entity {
   " The amount deposited in this strategy in USD "
   amountDepositedUSD: BigInt!
 }
+
+type Strategy implements Contract @entity {
+  " Strategy Address "
+  id: ID!
+
+  " Base token address "
+  baseTokenAddress: Bytes
+}
+
 ##################################
 ##### Savvy Position Manager #####
 ##################################
@@ -810,6 +819,7 @@ type SageSetFlowRateEvent implements Event @entity @transaction {
   " The flow rate for the base token "
   flowRate: BigInt!
 }
+
 ################
 ## Savvy Swap ##
 ################

@@ -122,6 +122,8 @@ dataSources:
       abis:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDepositEvent
@@ -147,6 +149,8 @@ dataSources:
       abis:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDepositEvent
@@ -172,6 +176,8 @@ dataSources:
       abis:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDepositEvent
@@ -197,6 +203,8 @@ dataSources:
       abis:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDepositEvent
@@ -222,6 +230,8 @@ dataSources:
       abis:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDepositEvent
@@ -247,6 +257,8 @@ dataSources:
       abis:
         - name: SavvySwap
           file: ../../abis/SavvySwap.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: Deposit(indexed address,indexed address,uint256)
           handler: handleDepositEvent
@@ -272,6 +284,8 @@ dataSources:
       abis:
         - name: SavvySage
           file: ../../abis/SavvySage.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: SetFlowRate(address,uint256)
           handler: handleSetFlowRateEvent
@@ -291,6 +305,8 @@ dataSources:
       abis:
         - name: SavvySage
           file: ../../abis/SavvySage.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: SetFlowRate(address,uint256)
           handler: handleSetFlowRateEvent
@@ -310,6 +326,8 @@ dataSources:
       abis:
         - name: SavvySage
           file: ../../abis/SavvySage.json
+        - name: SavvyFrontendInfoAggregator
+          file: ../../abis/SavvyFrontendInfoAggregator.json
       eventHandlers:
         - event: SetFlowRate(address,uint256)
           handler: handleSetFlowRateEvent
