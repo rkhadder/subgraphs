@@ -31,3 +31,9 @@ export function getSavvyDeFiOrCreate(): Protocol {
 
   return savvy;
 }
+
+export function addUniqueUser(): void {
+  const savvy = getSavvyDeFiOrCreate();
+  savvy.cumulativeUniqueUsers = savvy.cumulativeUniqueUsers + 1;
+  savvy.save();
+}

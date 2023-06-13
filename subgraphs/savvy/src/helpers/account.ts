@@ -6,7 +6,7 @@ import {
   StrategyBalance,
 } from "../../generated/schema";
 import { SavvyFrontendInfoAggregator as SavvyFrontendInfoAggregatorContract } from "../../generated/SavvyPositionManagerUSD/SavvyFrontendInfoAggregator";
-import { getSavvyDeFiOrCreate } from "./savvyDeFi";
+import { addUniqueUser, getSavvyDeFiOrCreate } from "./savvyDeFi";
 import { ADDRESS_TO_CONTRACTS_MAP } from "./config/aribtrumGoerli";
 
 export function getOrCreateAccount(address: string): Account {
@@ -16,6 +16,7 @@ export function getOrCreateAccount(address: string): Account {
     account.totalDepositedUSD = BigInt.zero();
     account.totalDebtUSD = BigInt.zero();
     account.save();
+    addUniqueUser();
   }
   return account;
 }
